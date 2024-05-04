@@ -79,7 +79,7 @@ export default function Layout(props: { children: React.ReactNode }) {
         </>
       }
     >
-      <div className="py-5 text-xl [&_p]:my-6">{props.children}</div>
+      <div className="py-1 text-xl [&_p]:my-1">{props.children}</div>
     </BaseTemplate>
   );
 }
