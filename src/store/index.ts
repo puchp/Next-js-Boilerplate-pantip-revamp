@@ -7,14 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { announceReducer } from '@/store/slices/announceSlice';
 import { authReducer } from '@/store/slices/authSlice';
 
-import { highligthReducer } from './slices/highligthSlice';
+import { highlightReducer } from './slices/highlightSlice';
 import { roomRecommendReducer } from './slices/roomRecommendSlice';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   announce: announceReducer,
   roomRecommend: roomRecommendReducer,
-  highligth: highligthReducer,
+  highlight: highlightReducer,
 });
 
 export const store = configureStore({

@@ -2,12 +2,13 @@
 
 import { useEffect } from 'react';
 
-import CardLoading from '@/components/CardLoading';
-import CardMedia from '@/components/CardMedia';
+import CardLoading from '@/components/Card/CardLoading';
+import CardMedia from '@/components/Card/CardMedia';
+import CardRoomRecommend from '@/components/Card/CardRoomRecommend';
 import Navbar from '@/components/Navbar';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { setAnnounceData } from '@/store/slices/announceSlice';
-import { setHighligthData } from '@/store/slices/highligthSlice';
+import { setHighlightData } from '@/store/slices/highlightSlice';
 import { setRoomRecommendData } from '@/store/slices/roomRecommendSlice';
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
   );
 
   const highlightContent = useAppSelector(
-    (state) => state.highligth.highligthData,
+    (state) => state.highlight.highlightData,
   );
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function Home() {
 
       dispatch(setAnnounceData(await getAnnounce?.json()));
       dispatch(setRoomRecommendData(await getRoomRecommend?.json()));
-      dispatch(setHighligthData(await getHighlight?.json()));
+      dispatch(setHighlightData(await getHighlight?.json()));
     }
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,8 +42,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* <AuthUpdater />
-      <AuthViewer /> */}
       <Navbar />
       <div className="px-3 sm:mx-6 md:mx-10 lg:mx-12">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -73,17 +72,8 @@ export default function Home() {
           <h1 className="mt-2 text-[#fbc02d]">Room Recommend</h1>
           <div className="">
             <div className="mt-4 flex  justify-start gap-3  overflow-scroll  pb-[10px]  sm:gap-4">
-              {(roomRecommendContent as any)?.data?.map((obj: any) => (
-                <div
-                  // onClick={}
-                  key={obj?.id}
-                  className="flex	min-w-[120px] items-center gap-2 overflow-hidden text-ellipsis	
-                  break-words rounded-none border border-b-4 bg-white 
-                  px-2 py-1 text-[16px] text-[#7872b1] duration-200 
-                  ease-out hover:border-b-[#4e478f] hover:bg-white hover:text-[#4e478f] sm:px-4 sm:text-[14px]"
-                >
-                  {obj?.name}
-                </div>
+              {(roomRecommendContent as any)?.data?.map((item: any) => (
+                <CardRoomRecommend key={item?.id} name={item?.name} />
               )) || <CardLoading />}
             </div>
           </div>
@@ -101,9 +91,21 @@ export default function Home() {
             </div>
           </div>
 
-          {/* {sidebarContent && (
+          {/* {announcementContent && (
             <pre className="text-[10px]">
-              {JSON.stringify(sidebarContent, null, 2)}
+              {JSON.stringify(announcementContent, null, 2)}
+            </pre>
+          )}
+
+          {roomRecommendContent && (
+            <pre className="text-[10px]">
+              {JSON.stringify(roomRecommendContent, null, 2)}
+            </pre>
+          )}
+
+          {highlightContent && (
+            <pre className="text-[10px]">
+              {JSON.stringify(highlightContent, null, 2)}
             </pre>
           )} */}
         </div>
