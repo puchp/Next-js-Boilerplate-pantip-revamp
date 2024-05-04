@@ -4,7 +4,15 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface RoomRecommend {
   success: boolean;
-  data: any[];
+  data: RoomRecommendItem[];
+}
+
+export interface RoomRecommendItem {
+  id: number;
+  name: string;
+  name_en: string;
+  slug: string;
+  is_pinned: boolean;
 }
 
 export interface IRoomRecommendState {

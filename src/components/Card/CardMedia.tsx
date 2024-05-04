@@ -1,6 +1,6 @@
 const CardMedia = (props: {
   title: string;
-  image: string;
+  image?: string;
   postUrl: string;
 }) => {
   return (

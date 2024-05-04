@@ -4,7 +4,15 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface Highlight {
   success: boolean;
-  data: any[];
+  data: HighlightItem[];
+}
+
+export interface HighlightItem {
+  name: string;
+  message: string;
+  weight: number;
+  image_url: string[];
+  post_url: string;
 }
 
 export interface IHighlightState {

@@ -7,7 +7,7 @@ export interface Announce {
   data: AnnounceItem[];
 }
 
-interface AnnounceItem {
+export interface AnnounceItem {
   announce_id: number;
   category_name: string;
   type: string;
