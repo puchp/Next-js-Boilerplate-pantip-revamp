@@ -43,6 +43,20 @@ export default function Home() {
   return (
     <div>
       <Navbar />
+
+      {/* Room Recommend */}
+      <div className="sticky top-[81px] z-50 bg-white/[90%] px-3 sm:mx-6 md:mx-10 lg:mx-12">
+        <div className="flex justify-start  gap-3 overflow-scroll  pb-[10px]  pt-4  sm:gap-4">
+          {(roomRecommendContent as any)?.data?.map((item: any) => (
+            <CardRoomRecommend
+              key={item?.id}
+              name={item?.name}
+              slug={item?.slug || ''}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="px-3 sm:mx-6 md:mx-10 lg:mx-12">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -69,15 +83,6 @@ export default function Home() {
             </div>
           </div>
 
-          <h1 className="mt-2 text-[#fbc02d]">Room Recommend</h1>
-          <div className="">
-            <div className="mt-4 flex  justify-start gap-3  overflow-scroll  pb-[10px]  sm:gap-4">
-              {(roomRecommendContent as any)?.data?.map((item: any) => (
-                <CardRoomRecommend key={item?.id} name={item?.name} />
-              )) || <CardLoading />}
-            </div>
-          </div>
-
           <h1 className="mt-2 text-[#fbc02d]">Highlight Content</h1>
           <div className="py-3 sm:py-5">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
@@ -86,6 +91,7 @@ export default function Home() {
                   key={item?.id}
                   title={item?.name}
                   image={item?.image_url[1]}
+                  postUrl={item?.post_url}
                 />
               )) || <CardLoading />}
             </div>

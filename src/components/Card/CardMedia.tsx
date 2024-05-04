@@ -1,6 +1,10 @@
-const CardMedia = (props: { title?: string; image: string }) => {
+const CardMedia = (props: {
+  title: string;
+  image: string;
+  postUrl: string;
+}) => {
   return (
-    <div className="">
+    <a href={props?.postUrl} target="_blank">
       <div className="relative">
         <div className="absolute size-full rounded-b-[1.3rem]" />
         <div className="flex  ">
@@ -17,11 +21,11 @@ const CardMedia = (props: { title?: string; image: string }) => {
       <div className="flex items-start justify-between pt-3">
         <div className="">
           <p className="max-w-[17rem] text-[14px]  font-semibold">
-            {props.title || ''}
+            {props?.title || ''}
           </p>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
