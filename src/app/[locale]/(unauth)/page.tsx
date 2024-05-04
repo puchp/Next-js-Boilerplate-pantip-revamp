@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect } from 'react';
 
 import CardLoading from '@/components/Card/CardLoading';
@@ -67,11 +68,12 @@ export default function Home() {
       </div>
 
       <div className="px-3 sm:mx-6 md:mx-10 lg:mx-12">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/assets/images/banner.png"
           alt=""
           className="w-full object-contain  sm:h-60 md:h-40"
+          width="1200"
+          height="200"
         />
         <div>
           <h1 className="text-[#fbc02d]">Announce</h1>
