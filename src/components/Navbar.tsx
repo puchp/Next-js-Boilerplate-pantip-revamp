@@ -33,10 +33,10 @@ const Navbar = () => {
           </div> */}
 
           <div
-            className="flex h-[50px] items-center gap-2 rounded-full border bg-[#4e478f] px-3 py-2 text-[14px]
+            className="flex h-[40px] items-center gap-2 rounded-full border bg-[#4e478f] px-3 py-2 text-[14px]
            text-white shadow-lg shadow-gray-300 duration-100 ease-out hover:bg-[#9a4fbf]"
           >
-            <p>Sign up</p>
+            {/* <p>Sign up</p> */}
             <BiUser className="text-[22px]" />
           </div>
         </div>
