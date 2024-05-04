@@ -1,21 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import CardLoading from '@/components/CardLoading';
 import CardMedia from '@/components/CardMedia';
 import Navbar from '@/components/Navbar';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { setAnnounceData } from '@/store/slices/announceSlice';
+import { setHighligthData } from '@/store/slices/highligthSlice';
+import { setRoomRecommendData } from '@/store/slices/roomRecommendSlice';
 
 export default function Home() {
-  const [roomRoomRecommendContent, setRoomRecommendContent] = useState();
-  const [roomHighlightContent, setHighlightContent] = useState();
-
   const dispatch = useAppDispatch();
 
   const announcementContent = useAppSelector(
     (state) => state.announce.announceData,
+  );
+
+  const roomRecommendContent = useAppSelector(
+    (state) => state.roomRecommend.roomRecommendData,
+  );
+
+  const highlightContent = useAppSelector(
+    (state) => state.highligth.highligthData,
   );
 
   useEffect(() => {
@@ -24,9 +31,9 @@ export default function Home() {
       const getRoomRecommend = await fetch('/api/get_room_recommend');
       const getHighlight = await fetch('/api/get_highlight');
 
-      setRoomRecommendContent(await getRoomRecommend?.json());
-      setHighlightContent(await getHighlight?.json());
       dispatch(setAnnounceData(await getAnnounce?.json()));
+      dispatch(setRoomRecommendData(await getRoomRecommend?.json()));
+      dispatch(setHighligthData(await getHighlight?.json()));
     }
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,8 +73,9 @@ export default function Home() {
           <h1 className="mt-2 text-[#fbc02d]">Room Recommend</h1>
           <div className="">
             <div className="mt-4 flex  justify-start gap-3  overflow-scroll  pb-[10px]  sm:gap-4">
-              {(roomRoomRecommendContent as any)?.data?.map((obj: any) => (
+              {(roomRecommendContent as any)?.data?.map((obj: any) => (
                 <div
+                  // onClick={}
                   key={obj?.id}
                   className="flex	min-w-[120px] items-center gap-2 overflow-hidden text-ellipsis	
                   break-words rounded-none border border-b-4 bg-white 
@@ -83,7 +91,7 @@ export default function Home() {
           <h1 className="mt-2 text-[#fbc02d]">Highlight Content</h1>
           <div className="py-3 sm:py-5">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-              {(roomHighlightContent as any)?.data?.map((item: any) => (
+              {(highlightContent as any)?.data?.map((item: any) => (
                 <CardMedia
                   key={item?.id}
                   title={item?.name}
