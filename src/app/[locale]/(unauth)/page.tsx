@@ -26,7 +26,6 @@ export default function Home() {
 
       setRoomRecommendContent(await getRoomRecommend?.json());
       setHighlightContent(await getHighlight?.json());
-
       dispatch(setAnnounceData(await getAnnounce?.json()));
     }
     fetchData();
