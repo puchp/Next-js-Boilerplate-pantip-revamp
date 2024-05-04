@@ -56,8 +56,6 @@
     "**/*.tsx",
     ".storybook/*.ts",
     ".next/types/**/*.ts",
-    "src/libs/Env.mjs",
-    "src/components/airbnb/Rental.js",
-    "src/app/[locale]/(unauth)/api/hello.tx"
+    "src/libs/Env.mjs"
   ]
 }
